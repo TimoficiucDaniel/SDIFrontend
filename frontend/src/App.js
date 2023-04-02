@@ -6,7 +6,7 @@ import GetCubeById from "./components/GetCubeById";
 import DeleteCubeById from "./components/DeleteCubeById";
 import UpdateCube from "./components/UpdateCube";
 import React from "react";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
+import {HashRouter as Router, Route, Routes} from "react-router-dom"
 import {Home} from "./components/Home";
 import AppMenu from "./components/AppMenu";
 
