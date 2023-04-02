@@ -2,7 +2,7 @@ import {AppBar, Box, Button, IconButton, Toolbar, Typography} from "@mui/materia
 import {Link, useLocation} from "react-router-dom";
 
 
-export const AppMenu = () => {
+export default function AppMenu() {
     const location = useLocation();
     const path = location.pathname;
 
