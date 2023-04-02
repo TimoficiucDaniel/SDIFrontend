@@ -1,13 +1,15 @@
 import * as React from 'react';
+import {useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Textarea from '@mui/joy/Textarea';
 import {Button, Container, FormControlLabel, Paper, Radio, RadioGroup} from "@mui/material";
 import {FormControl, FormLabel} from "@mui/joy";
-import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function AddCube() {
-    const paperStyle = {padding:'50px 20px',width:600,margin:'20px auto'}
+    const navigate = useNavigate();
+    const paperStyle = {padding: '50px 20px', width: 600, margin: '20px auto'}
     const[name,setName]=useState('')
     const[price,setPrice]=useState('')
     const[type,setType]=useState('')
@@ -18,10 +20,14 @@ export default function AddCube() {
         e.preventDefault()
         const cube={type,price,name,description,magnetic}
         console.log(cube)
-        fetch("http://localhost:80/cubes",{
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(cube)}).then(()=>{console.log("New cube added")})
+        fetch("http://localhost:80/cubes", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(cube)
+        }).then(() => {
+            console.log("New cube added")
+        })
+        navigate("/cubes")
     }
     return (
         <Container>

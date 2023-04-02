@@ -1,18 +1,19 @@
 import * as React from 'react';
+import {useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import {Button, Container,Paper} from "@mui/material";
-import {useState} from "react";
+import {Button, Container, Paper} from "@mui/material";
+import {useParams} from "react-router-dom";
 
 export default function GetCubeById() {
-    const paperStyle = {padding:'50px 20px',width:600,margin:'20px auto'}
-    const[id,setId]=useState('')
-    const[cube,setCube]=useState('')
-    let i = 0
+    const paperStyle = {padding: '50px 20px', width: 600, margin: '20px auto'}
+    const {cubeId} = useParams()
+    const [id, setId] = useState(cubeId)
+    const [cube, setCube] = useState('')
 
-    const handleGet=(e)=> {
+    const handleGet = (e) => {
         e.preventDefault()
-        fetch("http://localhost:80/cubes/"+String(id))
+        fetch("http://localhost:80/cubes/" + String(cubeId))
             .then(res => res.json())
             .then((result) => {
                 setCube(result);
@@ -33,7 +34,6 @@ export default function GetCubeById() {
                     <h2>Get Cube by Id</h2>
                     <TextField id="outlined-basic" label="Id" variant="outlined" required
                                value={id}
-                               onChange={(e)=>setId(e.target.value)}
                     /><br/>
                 </Box>
                 <Button variant="contained" color="secondary" onClick={handleGet}>

@@ -1,28 +1,35 @@
 import * as React from 'react';
+import {useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Textarea from '@mui/joy/Textarea';
 import {Button, Container, FormControlLabel, Paper, Radio, RadioGroup} from "@mui/material";
 import {FormControl, FormLabel} from "@mui/joy";
-import {useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 
 export default function UpdateCube() {
-    const paperStyle = {padding:'50px 20px',width:600,margin:'20px auto'}
-    const[id,setId]=useState('')
-    const[name,setName]=useState('')
-    const[price,setPrice]=useState('')
-    const[type,setType]=useState('')
-    const[description,setDescription]=useState('')
-    const[magnetic,setMagnetic]=useState('')
+    const {cubeId} = useParams()
+    const navigate = useNavigate()
+    const paperStyle = {padding: '50px 20px', width: 600, margin: '20px auto'}
+    const [id, setId] = useState(cubeId)
+    const [name, setName] = useState('')
+    const [price, setPrice] = useState('')
+    const [type, setType] = useState('')
+    const [description, setDescription] = useState('')
+    const [magnetic, setMagnetic] = useState('')
 
-    const handleUpdate=(e)=>{
+    const handleUpdate = (e) => {
         e.preventDefault()
         const cube={id,type,price,name,description,magnetic}
         console.log(cube)
-        fetch("http://localhost:80/cubes/"+String(id),{
-            method:"PUT",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(cube)}).then(()=>{console.log("Cube updated")})
+        fetch("http://localhost:80/cubes/" + String(id), {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(cube)
+        }).then(() => {
+            console.log("Cube updated")
+        })
+        navigate("/cubes")
     }
     return (
         <Container>
@@ -38,7 +45,6 @@ export default function UpdateCube() {
                     <h2>Update Cube</h2>
                     <TextField id="outlined-basic" label="Id" variant="outlined"
                                value={id}
-                               onChange={(e)=>setId(parseInt(e.target.value))}
                     /><br/>
                     <TextField id="outlined-basic" label="Name" variant="outlined"
                                value={name}
