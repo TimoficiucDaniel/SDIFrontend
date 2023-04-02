@@ -8,7 +8,7 @@ import UpdateCube from "./components/UpdateCube";
 import React from "react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import {Home} from "./components/Home";
-import {AppMenu} from "./components/AppMenu";
+import AppMenu from "./components/AppMenu";
 
 function App() {
     return (
