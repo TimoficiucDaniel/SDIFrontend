@@ -17,6 +17,7 @@ import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import AddIcon from "@mui/icons-material/Add";
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 export default function GetAllCube() {
     let i = 0;
@@ -25,7 +26,7 @@ export default function GetAllCube() {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:80/cubes`)
+        fetch(`http://13.53.44.17:80/cubes`)
             .then((response) => response.json())
             .then((data) => {
                 setCubes(data);
@@ -40,11 +41,18 @@ export default function GetAllCube() {
             {loading && <CircularProgress/>}
             {!loading && cubes.length === 0 && <p>No cubes found</p>}
             {!loading && (
-                <IconButton component={Link} sx={{mr: 3}} to={`/cubes/add`}>
-                    <Tooltip title="Add a new cube" arrow>
-                        <AddIcon color="primary"/>
-                    </Tooltip>
-                </IconButton>
+                <div>
+                    <IconButton component={Link} sx={{mr: 3}} to={`/cubes/add`}>
+                        <Tooltip title="Add a new cube" arrow>
+                            <AddIcon color="primary"/>
+                        </Tooltip>
+                    </IconButton>
+                    <IconButton component={Link} sx={{mr: 3}} to={`/cubes/stats`}>
+                        <Tooltip title="See stats" arrow>
+                            <RemoveRedEyeIcon color="primary"/>
+                        </Tooltip>
+                    </IconButton>
+                </div>
             )}
             {!loading && cubes.length > 0 && (
                 <TableContainer component={Paper}>

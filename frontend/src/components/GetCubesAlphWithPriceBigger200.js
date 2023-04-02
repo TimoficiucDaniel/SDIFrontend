@@ -1,7 +1,7 @@
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
-import { Container, Paper} from "@mui/material";
-import {useEffect, useState} from "react";
+import {Container, Paper} from "@mui/material";
 
 export default function GetCubesAlphWithPriceBigger200() {
     const paperStyle = {padding:'50px 20px',width:600,margin:'20px auto'}
@@ -9,7 +9,7 @@ export default function GetCubesAlphWithPriceBigger200() {
 
 
     useEffect(()=>{
-        fetch("http://localhost:80/cubes/stats/byAlphabetical")
+        fetch("http://13.53.44.17:80/cubes/stats/byAlphabetical")
             .then(res=>res.json())
             .then((result)=>{
             setCubes(result);

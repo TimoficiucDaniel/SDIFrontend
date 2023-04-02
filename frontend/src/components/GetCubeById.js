@@ -13,7 +13,7 @@ export default function GetCubeById() {
 
     const handleGet = (e) => {
         e.preventDefault()
-        fetch("http://localhost:80/cubes/" + String(cubeId))
+        fetch("http://13.53.44.17:80/cubes/" + String(cubeId))
             .then(res => res.json())
             .then((result) => {
                 setCube(result);
