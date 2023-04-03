@@ -34,6 +34,7 @@ export default function DeleteCubeById() {
                     <h2>Delete Cube by Id</h2>
                     <TextField id="outlined-basic" label="Id" variant="outlined" required
                                value={id}
+                               disabled
                     /><br/>
                 </Box>
                 <Button variant="contained" color="secondary" onClick={handleDelete}>

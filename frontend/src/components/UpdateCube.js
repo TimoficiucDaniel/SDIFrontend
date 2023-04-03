@@ -45,6 +45,7 @@ export default function UpdateCube() {
                     <h2>Update Cube</h2>
                     <TextField id="outlined-basic" label="Id" variant="outlined"
                                value={id}
+                               disabled
                     /><br/>
                     <TextField id="outlined-basic" label="Name" variant="outlined"
                                value={name}

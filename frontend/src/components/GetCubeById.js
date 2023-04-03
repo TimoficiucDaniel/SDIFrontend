@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import {Button, Container, Paper} from "@mui/material";
+import {Container, Paper} from "@mui/material";
 import {useParams} from "react-router-dom";
 
 export default function GetCubeById() {
@@ -11,14 +11,13 @@ export default function GetCubeById() {
     const [id, setId] = useState(cubeId)
     const [cube, setCube] = useState('')
 
-    const handleGet = (e) => {
-        e.preventDefault()
+    useEffect(() => {
         fetch("http://16.16.91.213:80/cubes/" + String(cubeId))
             .then(res => res.json())
             .then((result) => {
                 setCube(result);
-            })
-    }
+            });
+    }, []);
 
     return (
         <Container>
@@ -34,11 +33,9 @@ export default function GetCubeById() {
                     <h2>Get Cube by Id</h2>
                     <TextField id="outlined-basic" label="Id" variant="outlined" required
                                value={id}
+                               disabled
                     /><br/>
                 </Box>
-                <Button variant="contained" color="secondary" onClick={handleGet}>
-                    Get
-                </Button>
                     <Paper elevation={6}
                            style={{margin:"10px",padding:"15px",textAlign:"left"}} key={parseInt(cube.id)}>
                             Id:{parseInt(cube.id)}<br/>
