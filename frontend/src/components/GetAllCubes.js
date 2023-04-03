@@ -34,6 +34,7 @@ export default function GetAllCube() {
             });
     }, []);
 
+
     return (
         <Container>
             <h1>All Cubes</h1>
@@ -60,8 +61,8 @@ export default function GetAllCube() {
                         <TableHead>
                             <TableRow>
                                 <TableCell>#</TableCell>
-                                <TableCell align="right">Id</TableCell>
-                                <TableCell align="center">Operations</TableCell>
+                                <TableCell align="center">Id</TableCell>
+                                <TableCell align="right">Operations</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -70,7 +71,7 @@ export default function GetAllCube() {
                                     <TableCell component="th" scope="row">
                                         {index + 1}
                                     </TableCell>
-                                    <TableCell component="th" scope="row">
+                                    <TableCell align="center" component="th" scope="row">
                                         <Link to={`/cubes/${cubes[index]}/details`} title="View cube details">
                                             {cubes[index]}
                                         </Link>
